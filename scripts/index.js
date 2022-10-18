@@ -1,6 +1,6 @@
-const initSound = new Audio("../assets/sound/classic.mp3");
-const pathVideo = "../assets/movie/";
-const pathSound = "../assets/sound/";
+const initSound = new Audio("./assets/sound/classic.mp3");
+const pathVideo = "./assets/movie/";
+const pathSound = "./assets/sound/";
 const idDisablePlaySoundBtn = "disablePlaySoundBtn";
 const idPlaySoundBtn = "playSoundBtn";
 const windowClass = ".window";
