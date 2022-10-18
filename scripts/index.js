@@ -1,10 +1,16 @@
-const runSound = new Audio("../assets/sound/cyberpunk.wav");
+const initSound = new Audio("../assets/sound/classic.mp3");
+const pathVideo = "../assets/movie/";
+const pathSound = "../assets/sound/";
+const idDisablePlaySoundBtn = "disablePlaySoundBtn";
+const idPlaySoundBtn = "playSoundBtn";
+const windowClass = ".window";
+const video_backClass = ".video_back";
 let isPlaySound = false;
 let currentTitleId = "firstTitle";
 
 const currentSound = {
   suround: null,
-  music: runSound,
+  music: initSound,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,12 +33,12 @@ window.addEventListener("focus", () => {
 });
 
 function showWindow() {
-  const playSoundBtn = document.getElementById("playSoundBtn");
-  const disablePlaySoundBtn = document.getElementById("disablePlaySoundBtn");
+  const playSoundBtn = document.getElementById(idPlaySoundBtn);
+  const disablePlaySoundBtn = document.getElementById(idDisablePlaySoundBtn);
 
   const tl = gsap.timeline();
   tl.fromTo(
-    ".window",
+    windowClass,
     {
       opacity: 0,
       scale: 1.2,
@@ -61,13 +67,13 @@ function showWindow() {
   });
 
   function hideWindow() {
-    tl.to(".window", {
+    tl.to(windowClass, {
       duration: 1,
       opacity: 0,
       userSelect: "none",
       onCompleteScope: this.target,
       onComplete: function () {
-        tl.to(".window", { display: "none" });
+        tl.to(windowClass, { display: "none" });
       },
     });
   }
@@ -94,11 +100,8 @@ function stopSound() {
   }
 }
 
-const pathVideo = "../assets/movie/";
-const pathSound = "../assets/sound/";
-
 function selectTheme(video, music, suround) {
-  const videoEl = document.querySelector(".video_back");
+  const videoEl = document.querySelector(video_backClass);
   const videoPath = `${pathVideo}${video}`;
   const musicPath = `${pathSound}${music}`;
   videoEl.setAttribute("src", videoPath);
