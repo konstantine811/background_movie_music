@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
+  background-color: rgb(9, 9, 9);
 }
 
 .video_back {
